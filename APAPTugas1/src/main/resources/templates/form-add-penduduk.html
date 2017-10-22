@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<div class="container">
+		<h4>Tambah Penduduk</h4>
+		<form th:object="${penduduk}" action="/penduduk/tambah" method="post">
+			<div class="form-group">
+				<label for="nama">Masukkan Nama</label>
+				<input th:field="*{nama}" type="text" class="form-control" id="nama" name="nama" />
+				
+				<label for="tempat_lahir">Tempat Lahir</label>
+				<input th:field="*{tempat_lahir}" type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" />
+				
+				<label for="tanggal_lahir">Tanggal Lahir</label>
+				<input th:field="*{tanggal_lahir}" type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" />
+				
+				<label for="jenis_kelamin">Jenis Kelamin</label>
+				<select th:field="*{jenis_kelamin}" class="form-control" id="jenis_kelamin" name="jenis_kelamin">
+					<option value="0">Laki-laki</option>
+					<option value="1">Perempuan</option>
+				</select>
+				
+				<label for="golongan_darah">Golongan Darah</label>
+				<input th:field="*{golongan_darah}" type="text" class="form-control" id="golongan_darah" name="golongan_darah" />
+				
+				<label for="agama">Agama</label>
+				<input th:field="*{agama}" type="text" class="form-control" id="agama" name="agama" />
+				
+				<label for="status_perkawinan">Status Perkawinan</label>
+				<select th:field="*{status_perkawinan}" class="form-control" id="status_perkawinan" name="status_perkawinan">
+					<option value="Kawin">Kawin</option>
+					<option value="Belum Kawin">Belum Kawin</option>
+					<option value="Cerai Hidup">Cerai Hidup</option>
+					<option value="Cerai Mati">Cerai Mati</option>
+				</select>
+				
+				<label for="status_dalam_keluarga">Status dalam Keluarga</label>
+				<select th:field="*{status_dalam_keluarga}" class="form-control" id="status_dalam_keluarga" name="status_dalam_keluarga">
+					<option value="Kepala Keluarga">Kepala Keluarga</option>
+					<option value="Istri">Istri</option>
+					<option value="Anak">Anak</option>
+					<option value="Famili Lain">Famili Lain</option>
+					<option value="Pembantu">Pembantu</option>
+				</select>
+				
+				<label for="pekerjaan">Pekerjaan</label>
+				<input th:field="*{pekerjaan}" type="text" class="form-control" id="pekerjaan" name="pekerjaan" />
+				
+				<label for="is_wni">Kewarganegaraan</label>
+				<select th:field="*{is_wni}" class="form-control" id="is_wni" name="is_wni">
+					<option value="1">WNI</option>
+					<option value="0">WNA</option>
+				</select>
+				
+				<label for="is_wafat">Status Kematian</label>
+				<select th:field="*{is_wafat}" class="form-control" id="is_wafat" name="is_wafat">
+					<option value="0">Hidup</option>
+					<option value="1">Meninggal</option>
+				</select>
+				
+				<label for="id_keluarga">Id Keluarga</label>
+				<input th:field="*{id_keluarga}" type="text" class="form-control" id="id_keluarga" name="id_keluarga" />
+				
+				<button type="submit" class="btn btn-primary">Simpan</button>
+			</div>
+		</form>
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

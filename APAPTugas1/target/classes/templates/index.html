@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4">
+				<h4>Lihat Data Penduduk Berdasarkan NIK</h4>
+				<form action="/penduduk" method="get">
+					<div class="form-group">
+						<label for="nik">Masukkan Nomor Induk Kependudukan</label>
+						<input type="text" class="form-control" id="nik" name="nik" />
+						<button type="submit" class="btn btn-primary">Lihat</button>
+					</div>
+				</form>
+				<h4>Lihat Data Keluarga Berdasarkan NKK</h4>
+				<form action="/keluarga" method="get">
+					<div class="form-group">
+						<label for="nkk">Masukkan Nomor Kartu Keluarga</label>
+						<input type="text" class="form-control" id="nkk" name="nkk" />
+						<button type="submit" class="btn btn-primary">Lihat</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

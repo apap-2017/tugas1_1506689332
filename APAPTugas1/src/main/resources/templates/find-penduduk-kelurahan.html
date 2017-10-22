@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<div class="container">
+				<h4 th:text="'Lihat Data Penduduk Berdasarkan Kecamatan di Kota ' + ${namaKota} + ', Kecamatan ' + ${namaKecamatan}">Lihat Data Penduduk Berdasarkan Kecamatan di Kota X</h4>
+				<form action="/penduduk/cari" method="get">
+					<div class="form-group">
+						<label for="kt">Kota/Kabupaten</label>
+						<input type="hidden" name="kt" th:value="${kt}" />
+						<select class="form-control" id="kt" name="kt" disabled="disabled">
+							<option th:value="${kt}" th:text="${namaKota}">Kota</option>
+						</select>
+						<label for="kc">Kecamatan</label>
+						<input type="hidden" name="kc" th:value="${kc}" />
+						<select class="form-control" id="kc" name="kc" disabled="disabled">
+							<option th:value="${kc}" th:text="${namaKecamatan}">Kecamatan</option>
+						</select>
+						<label for="kl">Kelurahan</label>
+						<select class="form-control" id="kl" name="kl">
+							<option disabled="disabled" selected="selected">Pilih Kelurahan</option>
+							<option th:each="eachKelurahan,iterationStatus: ${kelurahan}" th:value="${eachKelurahan.id}" th:text="${eachKelurahan.nama_kelurahan}">Kelurahan</option>
+						</select>
+						<button type="submit" class="btn btn-primary">Lihat</button>
+					</div>
+				</form>
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

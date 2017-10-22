@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
+</head>
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<div class="container">
+		<h4 th:text="'Lihat Data Penduduk Berdasarkan Kecamatan di Kota ' + ${namaKota} + ', Kecamatan ' + ${namaKecamatan} + ', Kelurahan ' + ${namaKelurahan}">Lihat Data Penduduk Berdasarkan Kecamatan di Kota X</h4>
+		<table class="table table-hover" id="pendudukTable">
+			<thead>
+				<tr>
+					<th>NIK</th>
+					<th>Nama</th>
+					<th>Jenis Kelamin</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="penduduk,iterationStatus: ${penduduk}">
+					<td th:text="${penduduk.nik}">NIK Penduduk</td>
+					<td th:text="${penduduk.nama}">Nama Penduduk</td>
+					<div th:switch="${penduduk.jenis_kelamin}">
+						<td th:case="0" th:text="'Laki-laki'">Jenis Kelamin Penduduk</td>
+						<td th:case="1" th:text="'Perempuan'">Jenis Kelamin Penduduk</td>
+					</div>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script
+		  src="https://code.jquery.com/jquery-3.2.1.js"
+		  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+		  crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="/js/data-table.js"></script>
+</body>
+</html>

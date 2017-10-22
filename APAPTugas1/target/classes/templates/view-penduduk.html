@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Lihat Data Penduduk</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<div class="container">
+		<h3 th:text="'Lihat Data Penduduk - ' + ${penduduk.nik}">Lihat Data Penduduk - [NIK]</h3>
+		<div class="row">
+			<div class="col-sm-6">
+				<h4>NIK</h4>
+				<h4>Nama</h4>
+				<h4>Tempat/Tanggal Lahir</h4>
+				<h4>Alamat</h4>
+				<h4>RT/RW</h4>
+				<h4>Kelurahan/Desa</h4>
+				<h4>Kecamatan</h4>
+				<h4>Kota</h4>
+				<h4>Golongan Darah</h4>
+				<h4>Agama</h4>
+				<h4>Status Perkawinan</h4>
+				<h4>Pekerjaan</h4>
+				<h4>Kewarganegaraan</h4>
+				<h4>Status Kematian</h4>
+				<form th:object="${penduduk}" action="/penduduk/mati" method="post">
+					<div class="form-group">
+						<input type="hidden" th:field="*{nik}" class="form-control" id="nik" name="nik" th:value="${penduduk.nik}" />
+												
+						<button type="submit" class="btn btn-danger">Nonaktifkan</button>
+					</div>
+				</form>
+			</div>
+			<div class="col-sm-6">
+				<h4 th:text="${penduduk.nik}">NIK</h4>
+				<h4 th:text="${penduduk.nama}">Nama</h4>
+				<h4 th:text="${penduduk.tempat_lahir} + ', ' + ${date}">Tempat, Tanggal Lahir</h4>
+				<h4 th:text="${penduduk.alamat}">Alamat</h4>
+				<h4 th:text="${penduduk.RT} + '/' + ${penduduk.RW}">RT/RW</h4>
+				<h4 th:text="${penduduk.kelurahan}">Kelurahan</h4>
+				<h4 th:text="${penduduk.kecamatan}">Kecamatan</h4>
+				<h4 th:text="${penduduk.kota}">Kota</h4>
+				<h4 th:text="${penduduk.golongan_darah}">Golongan Darah</h4>
+				<h4 th:text="${penduduk.agama}">Agama</h4>
+				<h4 th:text="${penduduk.status_perkawinan}">Status Perkawinan</h4>
+				<h4 th:text="${penduduk.pekerjaan}">Pekerjaan</h4>
+				<div th:switch="${penduduk.is_wni}">
+					<h4 th:case="'1'">WNI</h4>
+					<h4 th:case="'0'">WNA</h4>
+				</div>
+				<div th:switch="${penduduk.is_wafat}">
+					<h4 th:case="'0'">Hidup</h4>
+					<h4 th:case="'1'">Meninggal</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

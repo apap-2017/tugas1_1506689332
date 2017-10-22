@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<div class="container">
+		<h4>Tambah Keluarga</h4>
+		<form th:object="${keluarga}" action="/keluarga/tambah" method="post">
+			<div class="form-group">
+				<label for="alamat">Alamat</label>
+				<input th:field="*{alamat}" type="text" class="form-control" id="alamat" name="alamat" />
+				
+				<label for="rt">RT</label>
+				<input th:field="*{rt}" type="text" class="form-control" id="rt" name="rt" />
+				
+				<label for="rw">RW</label>
+				<input th:field="*{rw}" type="text" class="form-control" id="rw" name="rw" />
+				
+				<label for="kelurahan">Kelurahan/Desa</label>
+				<input th:field="*{kelurahan}" type="text" class="form-control" id="kelurahan" name="kelurahan" />
+				
+				<label for="kecamatan">Kecamatan</label>
+				<input th:field="*{kecamatan}" type="text" class="form-control" id="kecamatan" name="kecamatan" />
+				
+				<label for="kota">Kota</label>
+				<input th:field="*{kota}" type="text" class="form-control" id="kota" name="kota" />
+				
+				<button type="submit" class="btn btn-primary">Simpan</button>
+			</div>
+		</form>
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
